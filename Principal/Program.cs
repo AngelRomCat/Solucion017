@@ -19,6 +19,8 @@ namespace Principal
             program.Comprobar();
             program.Eliminar();
             program.Comprobar();
+            program.EliminarTodosLosRegistrosQue();
+            program.Comprobar();
         }
 
         //INSERT O CREATE
@@ -115,6 +117,25 @@ namespace Principal
             Console.WriteLine("El resultado de la eliminación ha sido: " + ok);
 
             Console.ReadLine();
+        }
+
+        //DELETE muchos registros
+        private void EliminarTodosLosRegistrosQue()
+        {
+            Class1 class1 = new Class1();
+            IList<Categoria> categorias = class1.DevuelveCategorias();
+
+
+            foreach (Categoria categoria in categorias)
+            {
+                Console.WriteLine(categoria.CategoryID + " " + categoria.CategoryName);
+            }
+
+            Console.WriteLine("Dime el NOMBRE del registro a eliminar");
+            string texto = Console.ReadLine();
+
+            //Elimina todos los registros que tengan ese nombre
+
         }
     }
 }
