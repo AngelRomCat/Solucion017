@@ -98,5 +98,33 @@ namespace Datos
             return ok;
         }
 
+        public bool GuardarRegistro(string texto)
+        {
+            bool ok = false;
+            IList<Categoria> categorias = null;
+            categorias = _db.Categoria.Where(x => x.CategoryName == texto).ToList();
+            foreach (var categoria in categorias)
+            {
+                _db.Categoria.Remove(categoria);
+            }
+
+            try
+            {
+                int respuesta = 0;
+                respuesta = _db.SaveChanges();
+                if (respuesta > 0)
+                {
+                    ok = true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return ok;
+        }
+
     }
 }

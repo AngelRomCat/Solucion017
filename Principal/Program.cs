@@ -13,12 +13,12 @@ namespace Principal
         static void Main(string[] args)
         {
             Program program = new Program();
-            program.AnyadeCategoria();
-            program.Comprobar();
-            program.Modificar();
-            program.Comprobar();
-            program.Eliminar();
-            program.Comprobar();
+            //program.AnyadeCategoria();
+            //program.Comprobar();
+            //program.Modificar();
+            //program.Comprobar();
+            //program.Eliminar();
+            //program.Comprobar();
             program.EliminarTodosLosRegistrosQue();
             program.Comprobar();
         }
@@ -125,7 +125,6 @@ namespace Principal
             Class1 class1 = new Class1();
             IList<Categoria> categorias = class1.DevuelveCategorias();
 
-
             foreach (Categoria categoria in categorias)
             {
                 Console.WriteLine(categoria.CategoryID + " " + categoria.CategoryName);
@@ -136,6 +135,12 @@ namespace Principal
 
             //Elimina todos los registros que tengan ese nombre
 
+            bool ok = false;
+            ok = class1.GuardarRegistro(texto);
+
+            Console.WriteLine("El resultado de la eliminación ha sido: " + ok);
+
+            Console.ReadLine();
         }
     }
 }
